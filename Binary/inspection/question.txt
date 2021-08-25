@@ -1,0 +1,1 @@
+You are given a python binary that just prints "Pretty useless binary". Is it really useless??? Take a look at it to find out.
