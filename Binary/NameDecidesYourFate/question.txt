@@ -1,0 +1,1 @@
+You are given a binary file that is runnning on the server. Exploit it and get the flag
