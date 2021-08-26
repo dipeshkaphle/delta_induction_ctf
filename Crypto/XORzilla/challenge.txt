@@ -1,0 +1,3 @@
+Rick Sanchez has a super secret program on his computer in form of an executable file.
+To keep it safe from the Federation, he asked Morty to encrypt it.
+But Morty being Morty lost the encryption key. Help Rick to recover the program.

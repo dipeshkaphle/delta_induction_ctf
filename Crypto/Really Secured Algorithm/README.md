@@ -1,0 +1,34 @@
+# Really Secured Algorithm ???
+
+Since the 'e' is quite large, apply weiner attack, generate private key and decrypt the cipher:
+
+```python
+import owiener
+from Crypto import Random
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+import base64
+
+
+public_key = RSA.importKey(open("public.pem", "rb").read(), passphrase=None)
+e = public_key.e
+n = public_key.n
+d = owiener.attack(e, n)
+
+cipher = "NZm0wNa7K5PBKk8iW0M532h6KgsyczzTAdz6c/G8WLUU14rtK795CW6LSd8YvYJyqGBKHP0OvCgfdaI/zxvYZVMD1lO/HNLxj+gDM3NGxuESWc4xC3E90VZsWeCIF4843SxEOFhGDUZb8tZ7eZlpWv9lCzJ8SxCltwaza0Xs5nU="
+
+key = RSA.construct((n, e, d), consistency_check=True)
+private_key = key.exportKey()
+private_key = RSA.importKey(private_key, passphrase=None)
+print(type(private_key))
+
+
+def decrypt_public_key(encoded_encrypted_msg, private_key):
+    encryptor = PKCS1_OAEP.new(private_key)
+    decoded_encrypted_msg = base64.b64decode(encoded_encrypted_msg)
+    decoded_decrypted_msg = encryptor.decrypt(decoded_encrypted_msg)
+    return decoded_decrypted_msg
+
+
+print(decrypt_public_key(cipher, private_key).decode("utf-8"))
+```
