@@ -10,7 +10,7 @@ if (isset($_GET['part1'])) {
   }
 }
 ```
-Here we don't know the value of `CONSTANT_1`. But we need to make the if condition true. So, we need to make `strcmp` return `0`. Or do we? We can just pass a number instead of a string to `strcmp`, so that it returns NULL (invalid comparison). Now, due to type juggling, which is allowed when comparisons are done with `==`, it'll implicitly convert the `NULL` to `0` for us and bypass the if statement.
+Here we don't know the value of `CONSTANT_1`. But we need to make the if condition true. So, we need to make `strcmp` return `0`. Or do we? We can just pass an array instead of a string to `strcmp`, so that it returns NULL (invalid comparison). Now, due to type juggling, which is allowed when comparisons are done with `==`, it'll implicitly convert the `NULL` to `0` for us and bypass the if statement.
 
 ```php
 if (isset($_POST['part2'])) {
@@ -21,7 +21,7 @@ if (isset($_POST['part2'])) {
   }
 }
 ```
-Here we need a string which is `'5.5e5'`, but is also not `'5.5e5'`. Since due to type juggling, `'5.5e5'` is no longer a string, but rather the scientific notation of the number `550000` (5.5 x 10^5). So we can pass `550000`, or some variation of the scientific notation like `55e4` or `550e3`, etc. to bypass the if statement.
+Here we need a string which is `'5.5e5'`, but is also not `'5.5e5'`. Due to type juggling, `'5.5e5'` is no longer a string, but rather the scientific notation of the number `550000` (5.5 x 10^5). So we can pass `550000`, or some variation of the scientific notation like `55e4` or `550e3`, etc. to bypass the if statement.
 
 ```php
 if (isset($_COOKIE['part3'])) {
