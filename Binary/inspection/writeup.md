@@ -1,7 +1,7 @@
 The given binary is a '.pyc' file, basically a compiled python file. On running
 it with python, it just prints "Pretty useless binary". It doesnt make sense to
 look at it like this. After a bit of searching around, we can use the script
-![here](https://stackoverflow.com/questions/11141387/given-a-python-pyc-file-is-there-a-tool-that-let-me-view-the-bytecode/42720524)
+[here](https://stackoverflow.com/questions/11141387/given-a-python-pyc-file-is-there-a-tool-that-let-me-view-the-bytecode/42720524)
 to convert it to somewhat readable bytecode.
 
 - disass.py
