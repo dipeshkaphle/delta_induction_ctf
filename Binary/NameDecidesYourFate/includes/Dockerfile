@@ -1,7 +1,7 @@
 FROM python:3.9-slim-buster
 
 RUN apt-get update && \
-    apt-get -y install --no-install-recommends autoconf bison flex gcc g++ git libprotobuf-dev libnl-route-3-dev libtool make pkg-config protobuf-compiler && \
+    apt-get -y install --no-install-recommends autoconf bison flex gcc g++ gcc-multilib git libprotobuf-dev libnl-route-3-dev libtool make pkg-config protobuf-compiler && \
     git clone https://github.com/google/nsjail.git /nsjail && \
     cd /nsjail && make && cd / && \
     mv /nsjail/nsjail /bin && \
@@ -13,11 +13,4 @@ RUN apt-get update && \
 
 ENV LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/usr/local/lib
 
-COPY power_of_name /home/ctf/power_of_name
-COPY startup.sh /home/ctf
-
 WORKDIR /home/ctf
-
-RUN chmod +x startup.sh && \
-	chmod +x power_of_name && \
-    chown -R ctf: .

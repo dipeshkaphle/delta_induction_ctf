@@ -3,6 +3,9 @@
 # default file for pwn challenges
 # alternative launch script can be specified via cmd in challenge dockerfile
 
+chmod +x /home/ctf/power_of_name
+chmod +x /home/ctf/starup.sh
+
 PORT=${PORT:-3000}
 MAX_CONNS_PER_IP=${MAX_CONNS_PER_IP:-0}
 # 64MB
@@ -26,12 +29,12 @@ nsjail \
     -R /usr \
     -T /tmp \
     -T /dev -R /dev/urandom -R /dev/null \
-    -R /home/ctf/app:/app \
-    -D /app \
+    -R /home/ctf:/dctf \
+    -D /dctf \
     --disable_proc \
     --time_limit $TIME_LIMIT \
     --rlimit_cpu $RLIMIT_CPU \
     --rlimit_as $MAX_MEMORY \
     --cgroup_pids_max $MAX_PIDS \
     --cgroup_mem_max $MAX_MEMORY \
-	-- /home/ctf/power_of_name
+	-- /dctf/power_of_name

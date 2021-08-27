@@ -3,5 +3,10 @@ services:
   name_decides_your_fate: # challenge name
     build: .
     ports:
-      - "1337:1337" # local:container
+      - "1337:3000" # local:container
+    volumes:
+      - ./power_of_name:/home/ctf/power_of_name
+      - ./startup.sh:/home/ctf/startup.sh
     privileged: true
+    command: /home/ctf/startup.sh
+    entrypoint: /bin/bash
