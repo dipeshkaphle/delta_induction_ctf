@@ -24,6 +24,7 @@ nsjail \
     --group ctf \
     --max_conns_per_ip $MAX_CONNS_PER_IP \
     -R /lib \
+    -R /lib32 \
     -R /lib64 \
     -R /bin \
     -R /usr \

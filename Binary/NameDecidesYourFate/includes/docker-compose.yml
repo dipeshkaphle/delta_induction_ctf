@@ -7,6 +7,7 @@ services:
     volumes:
       - ./power_of_name:/home/ctf/power_of_name
       - ./startup.sh:/home/ctf/startup.sh
+      - ./flag.txt:/home/ctf/flag.txt
     privileged: true
     command: /home/ctf/startup.sh
     entrypoint: /bin/bash
