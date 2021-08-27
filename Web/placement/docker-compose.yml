@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  server:
+    build: 
+      context: ./server
+    container_name: php_sqli
+    ports:
+      - "8000:80"
+    restart: always
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    container_name: mysqli
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file: 
+      - .env
+    volumes: 
+      - ./docker-data-mysql:/var/lib/mysql
+      - ./mysql/scripts:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: pma_sqli
+    restart: always
+    ports:
+      - 8001:80
+    depends_on: 
+      - db

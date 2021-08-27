@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  web:
+    build: 
+      context: ./html
+    container_name: basic_js
+    ports:
+      - "9090:80"
+    volumes:
+      - ./html:/var/www/html
+    restart: always
