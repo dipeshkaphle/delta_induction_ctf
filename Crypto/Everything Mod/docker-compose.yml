@@ -9,4 +9,4 @@ services:
     entrypoint: /bin/bash
     command: /home/ctf/startup.sh
     ports:
-      - "4000:3000"
+      - "1337:3000"
